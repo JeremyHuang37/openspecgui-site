@@ -6,49 +6,194 @@
   <title>OpenSpecGUI — Mac 上的 OpenSpec 工作流助手</title>
   <meta name="description" content="在 Mac 上轻松管理 OpenSpec 变更与规范。查看变更、运行指令、管理规范，无需记命令即可完成常见 OpenSpec 工作流操作。支持 Cursor/IDE。" />
   <link rel="canonical" href="https://openspecgui-site.pages.dev/" />
-  <!-- Open Graph / 社交分享与搜索引擎 -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://openspecgui-site.pages.dev/" />
   <meta property="og:title" content="OpenSpecGUI — Mac 上的 OpenSpec 工作流助手" />
-  <meta property="og:description" content="在 Mac 上轻松管理 OpenSpec 变更与规范。查看变更、运行指令、管理规范，无需记命令即可完成常见 OpenSpec 工作流操作。" />
+  <meta property="og:description" content="在 Mac 上轻松管理 OpenSpec 变更与规范。查看变更、运行指令、管理规范，无需记命令即可完成常见操作。" />
   <meta property="og:locale" content="zh_CN" />
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="OpenSpecGUI — Mac 上的 OpenSpec 工作流助手" />
   <meta name="twitter:description" content="在 Mac 上轻松管理 OpenSpec 变更与规范。查看变更、运行指令、管理规范。" />
-  <link rel="stylesheet" href="assets/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ffffff;
+      color: #0f172a;
+    }
+
+    .dark-section {
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .feature-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-float {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .gradient-blur {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .spec-label {
+      background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <img src="assets/icon.svg" alt="OpenSpecGUI" class="hero-icon" width="128" height="128" />
-    <h1>OpenSpecGUI</h1>
-    <p class="tagline">在 Mac 上轻松管理 OpenSpec 变更与规范</p>
+
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="assets/logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-sm" />
+        <span class="text-xl font-extrabold tracking-tight">OpenSpecGUI</span>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="section why">
-      <h2>为什么需要 OpenSpecGUI？</h2>
-      <p>OpenSpec 用规范与变更驱动开发，但日常操作多在终端与编辑器间切换。OpenSpecGUI 为使用 OpenSpec 工作流的开发者与团队提供图形界面：查看变更、运行指令、管理规范，无需记命令即可完成常见操作。</p>
-    </section>
+  <!-- Hero Section -->
+  <main class="pt-32 pb-20 overflow-hidden relative">
+    <div class="gradient-blur top-20 -left-20"></div>
+    <div class="gradient-blur bottom-0 right-0"></div>
 
-    <section class="section features">
-      <h2>主要功能</h2>
-      <ul>
-        <li><strong>管理变更</strong> — 查看与跟踪 OpenSpec 变更状态，配合 Cursor/IDE 使用</li>
-        <li><strong>查看规范</strong> — 浏览项目中的规范与 delta spec，快速理解需求</li>
-        <li><strong>运行工作流</strong> — 一键执行常用 OpenSpec 流程（如 new、continue、apply 等）</li>
-      </ul>
-    </section>
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-sm font-medium">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+          </span>
+          <span>New Version v1.0.4 Available</span>
+        </div>
 
-    <section class="section download-section">
-      <p class="meta">Version 1.0 · macOS 12+</p>
-      <a href="OpenSpecGUI.app.zip" class="download-btn" download>下载 Mac 版</a>
-      <p class="hint">下载 zip 后解压，将 OpenSpecGUI.app 拖入「应用程序」即可使用。</p>
-    </section>
+        <h1 class="text-6xl md:text-8xl font-extrabold leading-[1.1] tracking-tight">
+          OpenSpecGUI
+        </h1>
+
+        <div class="space-y-4">
+          <h2 class="text-2xl md:text-3xl font-semibold text-slate-600">
+            An OpenSpec GUI Viewer
+          </h2>
+          <h2 class="text-2xl md:text-3xl font-semibold spec-label">
+            Visual OpenSpec Dashboard
+          </h2>
+        </div>
+
+        <p class="text-xl text-slate-500 max-w-lg leading-relaxed">
+          OpenSpecGUI 是浏览 OpenSpec 规范的图形界面。在一个界面中可视化项目，包括规范、需求与变更。
+        </p>
+
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="OpenSpecGUI.app.zip" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center space-x-3 hover:bg-slate-800 transition-all" download id="download">
+            <i class="fab fa-apple text-2xl"></i>
+            <span>Download for Mac</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="icon-float relative z-10">
+          <img src="assets/logo.png" alt="App Icon" class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-[60px] shadow-2xl border-8 border-white" />
+        </div>
+        <div class="absolute inset-0 bg-blue-400/20 blur-[120px] rounded-full -z-10"></div>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <p>OpenSpecGUI · 与 OpenSpec 工作流一起使用</p>
+  <!-- Content Preview Section -->
+  <section id="preview" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Main Preview -->
+        <div class="lg:col-span-8 group">
+          <div class="bg-white p-4 rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <img src="assets/screenshot.png" alt="OpenSpecGUI 仪表板界面" class="w-full rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]" />
+          </div>
+        </div>
+
+        <!-- Side Features -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          <div class="feature-card p-8 rounded-3xl flex-1">
+            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-6">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Structured Navigation</h3>
+            <p class="text-slate-500">Effortlessly explore complex spec hierarchies with a sidebar designed for high-density information.</p>
+          </div>
+          <div class="feature-card p-8 rounded-3xl flex-1 dark-section">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 mb-6">
+              <i class="fas fa-binoculars text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-white">Instant Insights</h3>
+            <p class="text-slate-400">Get a bird's-eye view of your project status, from drafts to completed performance optimizations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO / About Section -->
+  <section class="py-24 border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8 italic text-slate-400">"The missing bridge between specs and implementation."</h2>
+      <div class="grid md:grid-cols-2 gap-12 text-left">
+        <div>
+          <h4 class="font-bold mb-4">Powerful Visual Dashboard</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Visualize OpenSpec projects with built-in analytics. Monitor requirements distribution, file changes, and task completion rates through a clean, native interface.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Focused Specs Browsing</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Optimized for developers and designers. Quickly preview .md files, track design proposals, and manage performance optimization specs in one place.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-12 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-center md:text-left">
+        <div class="font-black text-2xl mb-2">OpenSpecGUI</div>
+        <p class="text-slate-400 text-sm">Designed for the next generation of specification management.</p>
+      </div>
+      <div class="text-slate-400 text-sm font-medium">
+        © 2026 OpenSpecGUI. All rights reserved.
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
